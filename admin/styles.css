@@ -1,0 +1,151 @@
+:root {
+  --primary-color: #7d968b;
+  --accent-color: #8e62c6;
+  --bg-color: #f4f7f6;
+  --card-bg: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-light: #717d7e;
+  --radius: 12px; /* Чуть меньше скругление для компактности */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  line-height: 1.4;
+  padding: 1rem 0.5rem; /* Меньше отступы по бокам */
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1.5rem; /* Уменьшено */
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; /* Меньше */
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+}
+
+/* -- СЕТКА -- */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem; /* Уменьшено с 2.5rem */
+}
+
+/* -- КАРТОЧКА -- */
+.guest-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1rem; /* Компактно: 1rem вместо 2rem */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid #eee;
+  transition: transform 0.2s;
+}
+
+/* Номер теперь просто мелкий текст в углу */
+.card-number {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-light);
+  opacity: 0.5;
+}
+
+.name__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; /* Компактнее */
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 0.5rem;
+  padding-right: 2rem;
+}
+
+/* Ссылка теперь — тонкая строка, а не огромный блок */
+.link-display {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  color: var(--accent-color);
+  text-decoration: none;
+  background: #f9f4ff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid rgba(142, 98, 198, 0.1);
+}
+
+/* -- КНОПКИ -- */
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.btn-copy {
+  flex-grow: 1;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  height: 38px; /* Значительно ниже (было 50) */
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-share {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.viber { background-color: #7360f2; }
+.telegram { background-color: #24A1DE; }
+
+/* Адаптация для совсем узких экранов */
+@media (max-width: 400px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* В одну колонку */
+  }
+  .name__title { font-size: 1rem; }
+  .btn-copy span { display: none; } /* Скроем текст "Копировать" если совсем тесно */
+}
